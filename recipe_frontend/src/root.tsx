@@ -8,6 +8,7 @@ import {
 import { RouterHead } from "./components/router-head/router-head";
 
 import "./global.css";
+import "./theme.css";
 
 export default component$(() => {
   /**
