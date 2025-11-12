@@ -1,4 +1,4 @@
-import { component$, useSignal, useTask$ } from "@builder.io/qwik";
+import { component$, useSignal, useTask$, useVisibleTask$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import Header from "~/components/ui/Header";
 import RecipeGrid from "~/components/RecipeGrid";
@@ -28,7 +28,8 @@ export default component$(() => {
   });
 
   // Keyboard shortcut: focus search on "/"
-  useTask$(() => {
+  // Use useVisibleTask$ so it only runs in the browser (avoids SSR window/document access)
+  useVisibleTask$(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "/") {
         const el = document.getElementById("search");
